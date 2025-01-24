@@ -1,7 +1,7 @@
 
 @{
     RootModule        = 'Fake-UserAgent.psm1'
-    ModuleVersion     = '0.2.0'
+    ModuleVersion     = '0.3.0'
     GUID              = 'ef6d1c27-66ac-4f6c-8cc6-2bbae0f24543'
     Author            = 'Alan Plocieniak'
     CompanyName       = 'Alan Plocieniak'
