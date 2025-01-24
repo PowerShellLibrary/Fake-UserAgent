@@ -3,8 +3,6 @@ function Get-UserAgent {
     param ()
 
     $data = Get-UserAgentData
-    return $data
+    return ,$data
 
 }
-
-Export-ModuleMember -Function Get-UserAgent

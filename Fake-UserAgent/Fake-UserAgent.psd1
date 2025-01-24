@@ -8,6 +8,7 @@
     Copyright         = '(c) Alan Plocieniak. All rights reserved.'
     Description       = 'PowerShell module for generating random User Agents.'
     PowerShellVersion = '5.0'
+    CompatiblePSEditions = 'Desktop', 'Core'
     FunctionsToExport = '*'
     PrivateData       = @{
         PSData = @{

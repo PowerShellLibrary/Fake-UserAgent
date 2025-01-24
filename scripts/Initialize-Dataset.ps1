@@ -4,7 +4,10 @@ function Initialize-Dataset {
     )
     Process {
 
-        Get-Content $uaJsonPath -Raw | ConvertFrom-Json | % {
+        $uaParser = [UAParser.Parser]::GetDefault()
+
+        [System.Object[]]$uas = Get-Content $uaJsonPath -Raw | ConvertFrom-Json
+        $uas  | % {
             $ua_result = $uaParser.Parse($_.userAgent)
             [PSCustomObject]@{
                 ua                          = $_.userAgent

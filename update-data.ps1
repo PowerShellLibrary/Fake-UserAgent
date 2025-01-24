@@ -12,19 +12,22 @@ if (Test-Path $temp) {
     Remove-Item -Path $temp -Recurse -Force
 }
 New-Item -ItemType Directory -Path $temp | Out-Null
-Push-Location -Path $temp
 
 
-Write-Host 'Downloading user-agents.json...'
-Invoke-WebRequest -Uri $uaJsonUri -OutFile "user-agents.json.gz"
+try {
+    Push-Location -Path $temp
+    Write-Host 'Downloading user-agents.json...'
+    Invoke-WebRequest -Uri $uaJsonUri -OutFile "user-agents.json.gz"
 
-Write-Host 'Decompressing user-agents.json...'
-ConvertFrom-Gzip -InputObject (Get-Item "user-agents.json.gz") -RemoveInputFile
+    Write-Host 'Decompressing user-agents.json...'
+    ConvertFrom-Gzip -InputObject (Get-Item "user-agents.json.gz") -RemoveInputFile
 
-Write-Host 'Processing user-agents.json...'
-$processed = Initialize-Dataset -uaJsonPath "user-agents.json"
-
-Pop-Location
+    Write-Host 'Processing user-agents.json...'
+    $processed = Initialize-Dataset -uaJsonPath "user-agents.json"
+}
+finally {
+    Pop-Location
+}
 
 Write-Host 'Exporting user-agents.dat...'
 Push-Location .\Fake-UserAgent\data
