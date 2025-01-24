@@ -1,11 +1,11 @@
 
 @{
     RootModule        = 'Fake-UserAgent.psm1'
-    ModuleVersion     = '0.1.0'
+    ModuleVersion     = '0.2.0'
     GUID              = 'ef6d1c27-66ac-4f6c-8cc6-2bbae0f24543'
     Author            = 'Alan Plocieniak'
     CompanyName       = 'Alan Plocieniak'
-    Copyright         = '(c) 2025 Alan Plocieniak. All rights reserved.'
+    Copyright         = '(c) Alan Plocieniak. All rights reserved.'
     Description       = 'PowerShell module for generating random User Agents.'
     PowerShellVersion = '5.0'
     FunctionsToExport = '*'

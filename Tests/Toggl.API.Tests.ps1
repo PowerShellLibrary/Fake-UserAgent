@@ -5,27 +5,10 @@ Describe 'Fake-UserAgent.Tests' {
     Context "Get-UserAgentData Tests" {
 
         BeforeAll {
-            $gzPath = '.\Fake-UserAgent\data\user-agents.json.gz'
-            $jsonPath = '.\Fake-UserAgent\data\user-agents.json'
             $datPath = '.\Fake-UserAgent\data\user-agents.dat'
-
-            Remove-Item -Path $jsonPath -ErrorAction SilentlyContinue
-            Remove-Item -Path $datPath -ErrorAction SilentlyContinue
-        }
-
-        It "should have initial state" {
-            Test-Path $gzPath | Should -Be $true
-            Test-Path $jsonPath | Should -Be $false
-            Test-Path $datPath | Should -Be $false
-        }
-
-        It "should not throw exception during initialization" {
-            { Get-UserAgent } | Should -Not -Throw
         }
 
         It "should have initialized state" {
-            Test-Path $gzPath | Should -Be $true
-            Test-Path $jsonPath | Should -Be $false
             Test-Path $datPath | Should -Be $true
         }
 
@@ -47,6 +30,26 @@ Describe 'Fake-UserAgent.Tests' {
             $agent.os                           | Should -Be "iOS"
             $agent.os_version                   | Should -Be ([version]::new(18, 1, 1, 0))
             $agent.platform                     | Should -Be "iPhone"
+        }
+    }
+
+    Context "UA file update Tests" {
+
+        BeforeAll {
+            $datPath = '.\Fake-UserAgent\data\user-agents.dat'
+            Remove-Item -Path $datPath -ErrorAction SilentlyContinue
+        }
+
+        It "should have initial state" {
+            Test-Path $datPath | Should -Be $false
+        }
+
+        It "should download and update user agents" {
+            { .\update-data.ps1 } | Should -Not -Throw
+        }
+
+        It "should have initialized state" {
+            Test-Path $datPath | Should -Be $true
         }
     }
 }
