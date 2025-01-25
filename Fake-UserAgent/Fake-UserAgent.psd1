@@ -1,7 +1,7 @@
 
 @{
     RootModule        = 'Fake-UserAgent.psm1'
-    ModuleVersion     = '0.3.0'
+    ModuleVersion     = '0.3.1'
     GUID              = 'ef6d1c27-66ac-4f6c-8cc6-2bbae0f24543'
     Author            = 'Alan Plocieniak'
     CompanyName       = 'Alan Plocieniak'
@@ -13,7 +13,7 @@
     PrivateData       = @{
         PSData = @{
             Tags       = @('powershell', 'fake', 'ps', 'power-shell', 'fake-useragent', 'useragent', 'user', 'agent' )
-            LicenseUri = 'https://github.com/PowerShellLibrary/Fake-UserAgent/blob/master/LICENSE.md'
+            LicenseUri = 'https://github.com/PowerShellLibrary/Fake-UserAgent/blob/master/LICENSE'
             ProjectUri = 'https://github.com/PowerShellLibrary/Fake-UserAgent'
         }
     }
